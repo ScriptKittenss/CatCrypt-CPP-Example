@@ -1,0 +1,24 @@
+# Build outputs
+x64/
+Debug/
+Release/
+*.exe
+*.pdb
+*.ilk
+*.obj
+*.ipch
+*.log
+
+# Visual Studio
+.vs/
+*.user
+*.vcxproj.user
+*.VC.db
+*.opendb
+
+# Test/runtime files
+session.dat
+*.dat
+
+# Old files
+main.cpp
