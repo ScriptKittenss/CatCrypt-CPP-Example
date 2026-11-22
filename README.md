@@ -12,7 +12,7 @@
 
 | File | What it is |
 | :--- | :--- |
-| `SKAuth.h` | Header-only SDK — `#include` it in any Windows C++ project |
+| `CatCrypt.h` | Header-only SDK — `#include` it in any Windows C++ project |
 | `loader.cpp` | CLI loader demo — login from the command line |
 | `imgui_auth.h` | ImGui login UI demo |
 | `skStr.h` | String helpers used by the SDK |
@@ -28,9 +28,9 @@ git clone https://github.com/ScriptKittenss/CatCrypt-CPP-Example.git
 ```
 
 ```cpp
-#include "SKAuth.h"
+#include "CatCrypt.h"
 
-SKAuth auth("YOUR_APP_ID", "1.0");
+CatCrypt auth("YOUR_APP_ID", "1.0");
 
 auto res = auth.Login("username", "password");
 if (!res.ok) {
@@ -56,7 +56,7 @@ if (!v.ok) {
 
 | Method | Description |
 | :--- | :--- |
-| `SKAuth(appId, version = "1.0")` | Create the client. Computes the machine HWID. |
+| `CatCrypt(appId, version = "1.0")` | Create the client. Computes the machine HWID. |
 | `Login(user, pass)` → `AuthResult{ok, message}` | Authenticate. On success fills `username`, `plan`, `expires`, `email`, `apiKey`, `hwid`. On failure show `message` as-is. |
 | `Register(user, pass, email = "", key = "")` | Create an account. `key` is optional. |
 | `Redeem(user, key)` | Apply a license key to an existing account. |
