@@ -16,7 +16,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SKAuth.h">
+    <ClInclude Include="CatCrypt.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="imgui_auth.h">
