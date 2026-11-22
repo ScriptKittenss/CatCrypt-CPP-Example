@@ -13,6 +13,11 @@
 | File | What it is |
 | :--- | :--- |
 | `SKAuth.h` | Header-only SDK — `#include` it in any Windows C++ project |
+| `loader.cpp` | CLI loader demo — login from the command line |
+| `imgui_auth.h` | ImGui login UI demo |
+| `skStr.h` | String helpers used by the SDK |
+| `storage.hpp` | Local session storage helpers |
+| `CatCrypt-CPP.sln` | Visual Studio solution — open it and build the demo (x64/Release) |
 
 Requires: C++17, Windows 10 SDK. Link `winhttp.lib` (`#pragma comment` already in the header).
 
