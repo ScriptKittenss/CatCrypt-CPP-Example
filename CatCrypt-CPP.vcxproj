@@ -85,7 +85,7 @@
 
   <!-- Header files -->
   <ItemGroup>
-    <ClInclude Include="SKAuth.h" />
+    <ClInclude Include="CatCrypt.h" />
     <ClInclude Include="imgui_auth.h" />
     <ClInclude Include="skStr.h" />
     <ClInclude Include="storage.hpp" />
