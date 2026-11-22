@@ -15,7 +15,7 @@
 static const std::string APP_ID      = skCrypt(APP_ID_RAW).decrypt();
 static const std::string APP_VERSION = skCrypt(APP_VERSION_RAW).decrypt();
 
-#include "SKAuth.h"
+#include "CatCrypt.h"
 #include "storage.hpp"
 
 #include <iostream>
@@ -125,7 +125,7 @@ std::string ExpiryCountdown(const std::string& expiry)
 
 std::atomic<bool> g_sessionValid{ true };
 
-void SessionThread(SKAuth* auth)
+void SessionThread(CatCrypt* auth)
 {
     // Runs in background during cheat session.
     // Add a /sdk/ping or /sdk/validate call here if you want
@@ -139,7 +139,7 @@ void SessionThread(SKAuth* auth)
 
 // ── Print user info after login ───────────────────────────────────────────────
 
-void PrintUserData(const SKAuth& auth)
+void PrintUserData(const CatCrypt& auth)
 {
     std::string expiry = ExpiryCountdown(auth.expires);
 
@@ -160,7 +160,7 @@ void PrintUserData(const SKAuth& auth)
 
 // ── Login ─────────────────────────────────────────────────────────────────────
 
-bool DoLogin(SKAuth& auth, Lockout& lockout)
+bool DoLogin(CatCrypt& auth, Lockout& lockout)
 {
     if (lockout.IsLocked()) {
         Color(12);
@@ -222,7 +222,7 @@ bool DoLogin(SKAuth& auth, Lockout& lockout)
 
 // ── Register ──────────────────────────────────────────────────────────────────
 
-void DoRegister(SKAuth& auth)
+void DoRegister(CatCrypt& auth)
 {
     Banner();
     Color(11);
@@ -255,7 +255,7 @@ void DoRegister(SKAuth& auth)
 
 // ── Upgrade — redeem a key on an existing account ─────────────────────────────
 
-void DoUpgrade(SKAuth& auth)
+void DoUpgrade(CatCrypt& auth)
 {
     Banner();
     Color(11);
@@ -285,7 +285,7 @@ void DoUpgrade(SKAuth& auth)
 
 // ── Auto-login ────────────────────────────────────────────────────────────────
 
-bool TryAutoLogin(SKAuth& auth)
+bool TryAutoLogin(CatCrypt& auth)
 {
     std::string user, pass, license;
     if (!LoadCredentials(user, pass, license)) return false;
@@ -322,7 +322,7 @@ bool TryAutoLogin(SKAuth& auth)
 
 // ── Cheat menu ────────────────────────────────────────────────────────────────
 
-void CheatMenu(SKAuth& auth)
+void CheatMenu(CatCrypt& auth)
 {
     // Start session keep-alive in background
     std::thread sessionThread(SessionThread, &auth);
@@ -414,7 +414,7 @@ int main()
     SetConsoleTitleA("Script Kittens Loader");
 
     // Init auth with XOR-obfuscated strings
-    SKAuth auth(APP_ID, APP_VERSION);
+    CatCrypt auth(APP_ID, APP_VERSION);
 
     Lockout lockout;
 
