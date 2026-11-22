@@ -1,6 +1,6 @@
 // ============================================================
 //  imgui_auth.h  —  Drop-in ImGui auth for internal cheats
-//  Copy this + SKAuth.h into your existing ImGui cheat project.
+//  Copy this + CatCrypt.h into your existing ImGui cheat project.
 //  Requires: ImGui already set up in your project.
 // ============================================================
 //
@@ -25,7 +25,7 @@
 // ============================================================
 #pragma once
 
-#include "SKAuth.h"
+#include "CatCrypt.h"
 #include <imgui.h>
 #include <thread>
 #include <atomic>
@@ -35,7 +35,7 @@ namespace AuthSystem
 {
     enum class State { Menu, Login, Register, Checking, LoggedIn };
 
-    static SKAuth*              g_auth    = nullptr;
+    static CatCrypt*              g_auth    = nullptr;
     static std::atomic<State>   g_state   = State::Menu;
     static std::string          g_msg     = "";
     static bool                 g_msgOk   = false;
@@ -48,7 +48,7 @@ namespace AuthSystem
     // ── Call once at DLL attach / startup ─────────────────────────────────────
     inline void Init(const std::string& appId, const std::string& version = "1.0")
     {
-        g_auth = new SKAuth(appId, version);
+        g_auth = new CatCrypt(appId, version);
     }
 
     // ── Call every frame inside your render loop ──────────────────────────────
